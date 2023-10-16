@@ -1,5 +1,49 @@
 #include "main.h"
 
+void handle_alias(char *tokens[], int token_count)
+{
+char *alias_name; *main_name;
+int i;
+Alias aliases[MAX_TOKENS];
+
+aliases[0].alias_name = "ll";
+aliases[0].main_name = "ls -l";
+
+if (token_count == 1)
+{
+for (i = 0; i < MAX_TOKENS && aliases[i].alias_name != NULL; i++)
+{
+write(STDOUT_FILENO, aliases[i].alias_name, strlen(aliases[i].alias_name));
+write(STDOUT_FILENO, "='", 2);
+write(STDOUT_FILENO, aliases[i].main_name, strlen(aliases[i].main_name));
+write(STDOUT_FILENO, "'\n", 2);
+}
+return;
+}
+alias_name = tokens[1];
+main_name = NULL;
+
+for (i = 0; i < MAX_TOKENS && aliases[i].alias_name != NULL; i++)
+{
+if (strcmp(alias_name, aliases[i].alias_name) == 0)
+{
+main_name = aliases[i].main_name;
+break;
+}
+}
+if (main_name != NULL)
+{
+write(STDOUT_FILENO, alias_name, strlen(alias_name));
+write(STDOUT_FILENO, "='", 2);
+write(STDOUT_FILENO, main_name, strlen(main_name));
+write(STDOUT_FILENO, "'\n", 2);
+}
+else
+{
+write(STDOUT_FILENO, "Alias not found.\n", strlen("Alias not found.\n"));
+}
+}
+
 /**
  * handle_builtins - function that executes builtin commands
  * @tokens: pointer to an array of strings
