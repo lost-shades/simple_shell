@@ -7,8 +7,9 @@
 */
 void handle_alias(char *tokens[], int token_count)
 {
-char *alias_name; *main_name;
 int i;
+char *alias_name, *main_name;
+
 Alias aliases[MAX_TOKENS];
 
 aliases[0].alias_name = "ll";

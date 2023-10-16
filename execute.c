@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * display_tokens - function to show argc on terminal
+ * @tokens: pointer to an array of string from user
+ * @count: pointer to count argv
+*/
 void display_tokens(char *tokens[], int *count)
 {
 /* Display tokens */
@@ -10,36 +15,43 @@ printf("Token %d: %s\n", i, tokens[i]);
 }
 }
 
-void tokenize_input(char *input, char *delimiter, char *tokens[], int *token_count)
+/**
+ * tokeniz_input - function to tokenize user input
+ * @input: string to be tokenized
+ * @delim: user input separators
+ * @tokens: pointer to an array of string from user
+ * @token_count: pointer to count argv
+*/
+void tokeniz_input(char *input, char *delim, char *tokens[], int *token_count)
 {
 /* Tokenize input */
-char *token = strtok(input, delimiter);
+char *token = strtok(input, delim);
 *token_count = 0;
 
 while (token != NULL && *token_count < MAX_TOKENS)
 {
 tokens[*token_count] = strdup(token);
-token = strtok(NULL, delimiter);
+token = strtok(NULL, delim);
 (*token_count)++;
 }
 
 tokens[*token_count] = NULL; /* Null-terminate the token array */
 }
 
+/**
+ * execute_command - function to execute commands from user
+ * @tokens: pointer to an array of string from user
+*/
 void execute_command(char *tokens[])
 {
-char *path_env;
-char *path;
-char *dir;
-char *full_path;
+char *path_env, *path;
+char *dir, *full_path;
 
 pid_t pid = fork();
 
 if (pid == 0)
 {
-/* Child process */
 /*tokens[MAX_TOKENS - 1] = NULL;*/
-
 if (execve(tokens[0], tokens, environ) == -1)
 {
 path_env = getenv("PATH");
@@ -70,9 +82,6 @@ perror("Fork failed");
 }
 else
 {
-/* Parent process */
 wait(NULL);
 }
 }
-
-

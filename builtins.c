@@ -1,10 +1,13 @@
 #include "main.h"
 
-
+/**
+ * handle_exit - function for builtin exit
+ * @tokens: pointer to an array of string
+ * @token_count: pointer to tokens counter
+*/
 void handle_exit(char *tokens[], int token_count)
 {
-/* 
-Algorithm:
+/*
 * If token_count == 1 or tokens[1] is NULL, exit with status 0.
 * If token_count == 2, convert tokens[1] to int and exit with that status
 */
@@ -24,6 +27,11 @@ write(STDOUT_FILENO, "exit: too many args\n", strlen("exit: too many args\n"));
 }
 }
 
+/**
+ * handle_cd - function for builtin change directory
+ * @tokens: pointer to an array of string
+ * @token_count: pointer to tokens counter
+*/
 void handle_cd(char *tokens[], int token_count)
 {
 /*
@@ -54,7 +62,7 @@ perror("cd");
 }
 else
 {
-write(STDOUT_FILENO, "cd: too many arguments\n", strlen(25));
+write(STDOUT_FILENO, "cd: too many args\n", strlen("cd: too many args\n"));
 return;
 }
 if (getcwd(cwd, sizeof(cwd)) != NULL)
@@ -67,10 +75,13 @@ perror("getcwd");
 }
 }
 
-void handle_env()
+/**
+ * handle_env - function for builtin env
+*/
+void handle_env(void)
 {
 /* Print the environ var using the extern char **environ.*/
-extern char **environ;
+/*extern char **environ;*/
 int i = 0;
 
 while (environ[i] != NULL)
@@ -81,6 +92,11 @@ i++;
 }
 }
 
+/**
+ * handle_setenv - function for builtin setenv
+ * @tokens: pointer to an array of string
+ * @token_count: pointer to tokens counter
+*/
 void handle_setenv(char *tokens[], int token_count)
 {
 /*
@@ -89,7 +105,7 @@ void handle_setenv(char *tokens[], int token_count)
 */
 if (token_count != 3)
 {
-write(STDOUT_FILENO, "setenv: incorrect number of args\n", strlen(33));
+write(STDOUT_FILENO, "wrong no of args\n", strlen("wrong no of args\n"));
 return;
 }
 if (setenv(tokens[1], tokens[2], 1) != 0)
@@ -98,6 +114,11 @@ perror("setenv");
 }
 }
 
+/**
+ * handle_unsetenv - function for builtin unsetenv
+ * @tokens: pointer to an array of string
+ * @token_count: pointer to tokens counter
+*/
 void handle_unsetenv(char *tokens[], int token_count)
 {
 /*
@@ -106,7 +127,7 @@ void handle_unsetenv(char *tokens[], int token_count)
 */
 if (token_count != 2)
 {
-write(STDOUT_FILENO, "unsetenv: incorrect number of args\n", strlen(35));
+write(STDOUT_FILENO, "wrong no of args\n", strlen("wrong no of args\n"));
 return;
 }
 if (unsetenv(tokens[1]) != 0)

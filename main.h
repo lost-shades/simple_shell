@@ -36,13 +36,11 @@ void handle_setenv(char *tokens[], int token_count);
 void handle_unsetenv(char *tokens[], int token_count);
 
 
-
-
 /* extern char *builtins;*/
 /* extern char *aliases;*/
 
 void display_tokens(char *tokens[], int *count);
-void tokenize_input(char *input, char *delimiter, char *tokens[], int *token_count);
+void tokeniz_input(char *input, char *delim, char *tokens[], int *token_count);
 void execute_command(char *tokens[]);
 void handle_builtins(char *tokens[], int *token_count);
 void handle_alias(char *tokens[], int token_count);
