@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+* handle_alias - function to handle alias
+* @tokens: pointer to array of strings
+* @token_count: pointer for tokens count
+*/
 void handle_alias(char *tokens[], int token_count)
 {
 char *alias_name; *main_name;
