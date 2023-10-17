@@ -31,7 +31,7 @@ char *main_name;
 
 void handle_exit(char *tokens[], int token_count);
 void handle_cd(char *tokens[], int token_count);
-void handle_env();
+void handle_env(void);
 void handle_setenv(char *tokens[], int token_count);
 void handle_unsetenv(char *tokens[], int token_count);
 
