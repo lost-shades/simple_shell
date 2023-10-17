@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 * handle_alias - function to handle alias
 * @tokens: pointer to array of strings
@@ -9,12 +8,9 @@ void handle_alias(char *tokens[], int token_count)
 {
 int i;
 char *alias_name, *main_name;
-
 Alias aliases[MAX_TOKENS];
-
 aliases[0].alias_name = "ll";
 aliases[0].main_name = "ls -l";
-
 if (token_count == 1)
 {
 for (i = 0; i < MAX_TOKENS && aliases[i].alias_name != NULL; i++)
@@ -28,7 +24,6 @@ return;
 }
 alias_name = tokens[1];
 main_name = NULL;
-
 for (i = 0; i < MAX_TOKENS && aliases[i].alias_name != NULL; i++)
 {
 if (strcmp(alias_name, aliases[i].alias_name) == 0)
