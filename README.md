@@ -1,4 +1,4 @@
-This is the README file for the task simple Shell made for ALX course
+This file is the README file for the task simple Shell made for ALX course
 this is a simple shell that is capable of displaying prompt and taking commands
 and handling lines with arguments it has builtin commands and it shall complete the following tasks of the course:
 0. Betty would be proud
