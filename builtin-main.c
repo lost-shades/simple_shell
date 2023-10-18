@@ -49,6 +49,7 @@ write(STDOUT_FILENO, "Alias not found.\n", strlen("Alias not found.\n"));
  * handle_builtins - function that executes builtin commands
  * @tokens: pointer to an array of strings
  * @token_count: pointer to counter for tokens
+ * Return: 0 at success
 */
 
 int handle_builtins(char *tokens[], int *token_count)
