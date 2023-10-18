@@ -13,9 +13,11 @@ int i;
 
 tokeniz_input(buff, delimiter, tokens, token_count);
 /* display_tokens(tokens, token_count); */
-handle_builtins(tokens, token_count);
-/*handle_alias (tokens, *token_count);  ---has problems*/
+if (!handle_builtins(tokens, token_count))
+{
 execute_command(tokens);
+}
+/*handle_alias (tokens, *token_count);  ---has problems*/
 
 for (i = 0; i < *token_count; i++)
 {

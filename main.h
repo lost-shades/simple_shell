@@ -42,7 +42,7 @@ void handle_unsetenv(char *tokens[], int token_count);
 void display_tokens(char *tokens[], int *count);
 void tokeniz_input(char *input, char *delim, char *tokens[], int *token_count);
 void execute_command(char *tokens[]);
-void handle_builtins(char *tokens[], int *token_count);
+int handle_builtins(char *tokens[], int *token_count);
 void handle_alias(char *tokens[], int token_count);
 void process_input(char *buff, char *delimiter, int *token_count);
 

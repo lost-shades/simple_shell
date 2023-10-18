@@ -51,7 +51,7 @@ write(STDOUT_FILENO, "Alias not found.\n", strlen("Alias not found.\n"));
  * @token_count: pointer to counter for tokens
 */
 
-void handle_builtins(char *tokens[], int *token_count)
+int handle_builtins(char *tokens[], int *token_count)
 {
 int i = 0;
 Builtin builtins[] = {
@@ -70,11 +70,12 @@ if (strcmp(tokens[0], builtins[i].builtin_name) == 0)
 if (builtins[i].function != NULL)
 {
 builtins[i].function(tokens, *token_count);
-break;
+return (1);
 }
 }
 i++;
 }
 /*execute_command(tokens); ---Don't execute twice---*/
 /* if not builtin, execute as a normal command*/
+return (0);
 }
