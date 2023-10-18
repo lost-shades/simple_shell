@@ -77,8 +77,11 @@ perror("getcwd");
 
 /**
  * handle_env - function for builtin env
+ *@tokens: this shall rep tokens
+ *@token_count: this shall rep nums oftokens
 */
-void handle_env(void)
+void handle_env(__attribute__((unused))char *tokens[],
+		__attribute__((unused))int token_count)
 {
 /* Print the environ var using the extern char **environ.*/
 /*extern char **environ;*/

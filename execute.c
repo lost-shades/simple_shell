@@ -63,7 +63,6 @@ if (pid == 0)
 if (execve(tokens[0], tokens, environ) == -1)
 {
 dir = strtok(path, ":");
-
 while (dir != NULL)
 {
 full_path = malloc(strlen(dir) + strlen(tokens[0]) + 2);
