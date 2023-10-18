@@ -16,20 +16,22 @@
 extern char **environ;
 
 /**
- *Description - this struct shall define builtin
- *@builtin_name: this shall represent the buitin cmnds
- *Return: it shall return commands
- */
-typedef struct
+ * struct Builtin - name of builtin struct
+ * @builtin_name: name of the builtin
+ * @function: the function of the builtins
+*/
+typedef struct Builtin
 {
 char *builtin_name;
 void (*function)(char *tokens[], int token_count);
 } Builtin;
 
 /**
- *two - this struct shallrep aliases
- */
-typedef struct
+ * struct Alias - name of the alias struct
+ * @alias_name: name of alias
+ * @main_name: the real name of the alias
+*/
+typedef struct Alias
 {
 char *alias_name;
 char *main_name;
