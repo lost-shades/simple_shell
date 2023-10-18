@@ -46,22 +46,22 @@ void execute_command(char *tokens[])
 {
 char *path_env, *path;
 char *dir, *full_path;
-
 pid_t pid = fork();
+
+path_env = getenv("PATH");
+path = strdup(path_env);
+
+if (path_env == NULL || strlen(path_env) == 0)
+{
+perror("Error in PATH retrieval");
+return;
+}
 
 if (pid == 0)
 {
 /*tokens[MAX_TOKENS - 1] = NULL;*/
 if (execve(tokens[0], tokens, environ) == -1)
 {
-path_env = getenv("PATH");
-
-if (path_env == NULL)
-{
-perror("Error in PATH retrieval");
-exit(EXIT_FAILURE);
-}
-path = strdup(path_env);
 dir = strtok(path, ":");
 
 while (dir != NULL)
@@ -84,4 +84,5 @@ else
 {
 wait(NULL);
 }
+free(path);
 }
